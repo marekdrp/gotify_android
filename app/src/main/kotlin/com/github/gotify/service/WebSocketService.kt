@@ -194,7 +194,7 @@ internal class WebSocketService : Service() {
     }
 
     private fun onOpen() {
-        showForegroundNotification(getString(R.string.websocket_listening))
+        //showForegroundNotification(getString(R.string.websocket_listening))
     }
 
     private fun notifyMissedNotifications() {
