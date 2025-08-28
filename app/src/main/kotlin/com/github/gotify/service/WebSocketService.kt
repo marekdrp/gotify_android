@@ -258,39 +258,8 @@ internal class WebSocketService : Service() {
     override fun onBind(intent: Intent): IBinder? = null
 
     private fun showForegroundNotification(title: String, message: String? = null) {
-        val notificationIntent = Intent(this, MessagesActivity::class.java)
-
-        val pendingIntent = PendingIntent.getActivity(
-            this,
-            0,
-            notificationIntent,
-            PendingIntent.FLAG_IMMUTABLE
-        )
-        val notificationBuilder =
-            NotificationCompat.Builder(this, NotificationSupport.Channel.FOREGROUND)
-        notificationBuilder.setSmallIcon(R.drawable.ic_gotify)
-        notificationBuilder.setOngoing(true)
-        notificationBuilder.priority = NotificationCompat.PRIORITY_MIN
-        notificationBuilder.setShowWhen(false)
-        notificationBuilder.setWhen(0)
-        notificationBuilder.setContentTitle(title)
-
-        if (message != null) {
-            notificationBuilder.setContentText(message)
-            notificationBuilder.setStyle(NotificationCompat.BigTextStyle().bigText(message))
-        }
-
-        notificationBuilder.setContentIntent(pendingIntent)
-        notificationBuilder.color = ContextCompat.getColor(applicationContext, R.color.colorPrimary)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            startForeground(
-                NotificationSupport.ID.FOREGROUND,
-                notificationBuilder.build(),
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE
-            )
-        } else {
-            startForeground(NotificationSupport.ID.FOREGROUND, notificationBuilder.build())
-        }
+        //Logger.info("Title: " + title, " Message: " + message)
+        return
     }
 
     private fun showNotification(
